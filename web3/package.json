@@ -4,7 +4,7 @@
     "build": "npx thirdweb@latest detect",
     "deploy": "npx thirdweb@latest deploy",
     "release": "npx thirdweb@latest release",
-    "lint": "npx prettier --list-different 'contracts/*.sol'"
+    "lint": "npx prettier --list-different contracts/*.sol"
   },
   "devDependencies": {
     "hardhat": "^2.10.1",
