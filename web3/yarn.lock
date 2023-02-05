@@ -2296,7 +2296,7 @@
   dependencies:
     "fast-diff" "^1.1.2"
 
-"prettier-plugin-solidity@^1.0.0-alpha.14", "prettier-plugin-solidity@1.1.1":
+"prettier-plugin-solidity@^1.0.0-alpha.14", "prettier-plugin-solidity@^1.1.1":
   "integrity" "sha512-uD24KO26tAHF+zMN2nt1OUzfknzza5AgxjogQQrMLZc7j8xiQrDoNWNeOlfFC0YLTwo12CLD10b9niLyP6AqXg=="
   "resolved" "https://registry.npmjs.org/prettier-plugin-solidity/-/prettier-plugin-solidity-1.1.1.tgz"
   "version" "1.1.1"
@@ -2310,7 +2310,7 @@
   "resolved" "https://registry.npmjs.org/prettier/-/prettier-1.19.1.tgz"
   "version" "1.19.1"
 
-"prettier@^1.15.0 || ^2.0.0", "prettier@>=2.3.0 || >=3.0.0-alpha.0", "prettier@2.8.3":
+"prettier@^1.15.0 || ^2.0.0", "prettier@^2.8.3", "prettier@>=2.3.0 || >=3.0.0-alpha.0":
   "integrity" "sha512-tJ/oJ4amDihPoufT5sM0Z1SKEuKay8LfVAMlbbhnnkvt6BUserZylqo2PN+p9KeljLr0OHa2rXHU1T8reeoTrw=="
   "resolved" "https://registry.npmjs.org/prettier/-/prettier-2.8.3.tgz"
   "version" "2.8.3"
@@ -2584,7 +2584,7 @@
     "semver" "^5.5.0"
     "tmp" "0.0.33"
 
-"solhint-plugin-prettier@0.0.5":
+"solhint-plugin-prettier@^0.0.5":
   "integrity" "sha512-7jmWcnVshIrO2FFinIvDQmhQpfpS2rRRn3RejiYgnjIE68xO2bvrYvjqVNfrio4xH9ghOqn83tKuTzLjEbmGIA=="
   "resolved" "https://registry.npmjs.org/solhint-plugin-prettier/-/solhint-plugin-prettier-0.0.5.tgz"
   "version" "0.0.5"

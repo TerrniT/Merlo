@@ -1,0 +1,8 @@
+build
+node_modules
+.github
+.git
+.env
+.env.local
+.vscode
+.mac

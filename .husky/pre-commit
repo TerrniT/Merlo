@@ -1,0 +1,14 @@
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+
+
+#!/ Frontend 
+echo "Running frontend linting tool..🥯🥯🥯"
+cd ./frontend && npm run format && npm run lint:fix 
+echo "\033c"
+
+
+#!/ Backend 
+echo "Running web3/backend linting tool..🍣🍣🍣"
+cd ../web3 && npm run prettier:solidity   
+echo "\033c"
