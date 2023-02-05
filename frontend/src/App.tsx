@@ -1,25 +1,26 @@
-import { Route , Routes} from "react-router-dom"
-import {Home, Profile, CreateCampaign, CampignDetails} from "./pages"
+import { Route, Routes } from 'react-router-dom'
+import { Navbar, Sidebar } from './components'
+import { Home, Profile, CreateCampaign, CampignDetails } from './pages'
 
 const App = () => {
   return (
-    <div className="relative sm:-8 p-4 bg-zinc-900 min-h-screen flex">
-      <div className="sm:flex hidden mr-10 relative ">
-        sidebar
+    <div className='relative sm:-8 p-4 bg-zinc-900 min-h-screen flex'>
+      <div className='sm:flex hidden mr-10 relative '>
+        <Sidebar />
       </div>
 
-      <div className="flex-1 max-sm:w-full max-w-[1280px] mx-auto sm:pr-5">
-        navbar
+      <div className='flex-1 max-sm:w-full max-w-[1280px] mx-auto sm:pr-5'>
+        <Navbar />
       </div>
 
       <Routes>
-        <Route path="/" element={<Home/>}/>
-        <Route path="/" element={<Profile/>}/>
-        <Route path="/" element={<CreateCampaign/>}/>
-        <Route path="/" element={<CampignDetails/>}/>
+        <Route path='/' element={<Home />} />
+        <Route path='/' element={<Profile />} />
+        <Route path='/' element={<CreateCampaign />} />
+        <Route path='/' element={<CampignDetails />} />
       </Routes>
     </div>
   )
-};
+}
 
-export default App;
+export default App
