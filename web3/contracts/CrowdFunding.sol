@@ -2,82 +2,79 @@
 pragma solidity ^0.8.9;
 
 contract CrowdFunding {
-	mapping(uint256 => Campaign) public campaigns;
+    mapping(uint256 => Campaign) public campaigns;
 
-	uint256 public numberOfCampaigns = 0;
+    uint256 public numberOfCampaigns = 0;
 
-	struct Campaign {
-		address owner;
-		string title;
-		string description;
-		uint256 target;
-		uint256 deadline;
-		uint256 amountCollected;
-		string image;
-		address[] donators;
-		uint256[] dontations;
-	}
+    struct Campaign {
+        address owner;
+        string title;
+        string description;
+        uint256 target;
+        uint256 deadline;
+        uint256 amountCollected;
+        string image;
+        address[] donators;
+        uint256[] dontations;
+    }
 
-	// contract functions
-	function createCampaign(
-		address _owner,
-		string memory _title,
-		string memory _description,
-		uint256 _target,
-		uint256 _deadline,
-		string memory _image
-	) public returns (uint256) {
-		Campaign storage campaign = campaigns[numberOfCampaigns];
+    // contract functions
+    function createCampaign(
+        address _owner,
+        string memory _title,
+        string memory _description,
+        uint256 _target,
+        uint256 _deadline,
+        string memory _image
+    ) public returns (uint256) {
+        Campaign storage campaign = campaigns[numberOfCampaigns];
 
-		// is everything okay?
-		require(
-			campaign.deadline < block.timestamp,
-			"The deadline should be a date in future"
-		);
+        // is everything okay?
+        require(campaign.deadline < block.timestamp, "The deadline should be a date in future");
 
-		campaign.owner = _owner;
-		campaign.title = _title;
-		campaign.description = _description;
-		campaign.target = _target;
-		campaign.deadline = _deadline;
-		campaign.amountCollected = 0;
-		campaign.image = _image;
+        campaign.owner = _owner;
 
-		numberOfCampaigns++;
+        campaign.title = _title;
+        campaign.description = _description;
+        campaign.target = _target;
+        campaign.deadline = _deadline;
+        campaign.amountCollected = 0;
+        campaign.image = _image;
 
-		return numberOfCampaigns - 1;
-	}
+        numberOfCampaigns++;
 
-	function donateToCampaign(uint256 _id) public payable {
-		uint256 amount = msg.value;
+        return numberOfCampaigns - 1;
+    }
 
-		Campaign storage campaign = campaigns[_id];
+    function donateToCampaign(uint256 _id) public payable {
+        uint256 amount = msg.value;
 
-		campaign.donators.push(msg.sender);
-		campaign.dontations.push(amount);
+        Campaign storage campaign = campaigns[_id];
 
-		(bool sent, ) = payable(campaign.owner).call{value: amount}("");
+        campaign.donators.push(msg.sender);
+        campaign.dontations.push(amount);
 
-		if (sent) {
-			campaign.amountCollected = campaign.amountCollected + amount;
-		}
-	}
+        // solhint-disable-next-line
+        (bool sent, ) = payable(campaign.owner).call{value: amount}("");
 
-	function getDonators(
-		uint256 _id
-	) public view returns (address[] memory, uint256[] memory) {
-		return (campaigns[_id].donators, campaigns[_id].dontations);
-	}
+        if (sent) {
+            campaign.amountCollected = campaign.amountCollected + amount;
+        }
+    }
 
-	function getCampaigns() public view returns (Campaign[] memory) {
-		Campaign[] memory allCampaigns = new Campaign[](numberOfCampaigns);
+    function getDonators(uint256 _id) public view returns (address[] memory, uint256[] memory) {
+        return (campaigns[_id].donators, campaigns[_id].dontations);
+    }
 
-		for (uint256 i = 0; i < numberOfCampaigns; i++) {
-			Campaign storage item = campaigns[i];
+    function getCampaigns() public view returns (Campaign[] memory) {
+        Campaign[] memory allCampaigns = new Campaign[](numberOfCampaigns);
 
-			allCampaigns[i] = item;
-		}
+        for (uint256 i = 0; i < numberOfCampaigns; i++) {
+            Campaign storage item = campaigns[i];
 
-		return allCampaigns;
-	}
+            allCampaigns[i] = item;
+        }
+
+        return allCampaigns;
+    }
 }
