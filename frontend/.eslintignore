@@ -6,3 +6,5 @@ node_modules
 .env.local
 .vscode
 .mac
+tailwind.config.js
+postcss.config.js

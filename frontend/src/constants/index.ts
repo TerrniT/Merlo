@@ -1,6 +1,8 @@
-import { createCampaign, dashboard, logout, payment, profile, withdraw } from "../assets/index.js"
+import { createCampaign, dashboard, logout, payment, profile, withdraw } from "../assets/"
 
-export const navlinks = [
+// TODO: add interface
+
+export const navlinks: any = [
 	{
 		name: "dashboard",
 		imgUrl: dashboard,
