@@ -13,17 +13,17 @@ import money from "./money.svg"
 import loader from "./loader.svg"
 
 export {
-	tagType,
-	createCampaign,
-	dashboard,
-	logo,
-	logout,
-	payment,
-	profile,
-	sun,
-	withdraw,
-	search,
-	menu,
-	money,
-	loader,
-}  
+    tagType,
+    createCampaign,
+    dashboard,
+    logo,
+    logout,
+    payment,
+    profile,
+    sun,
+    withdraw,
+    search,
+    menu,
+    money,
+    loader,
+}
