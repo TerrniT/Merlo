@@ -1,17 +1,25 @@
 interface IconProps {
-	styles?: string
-	imgUrl: string
-	isActive?: string
-	name?: string
-	handleClick?: () => void
-	disabled?: boolean
+  styles?: string
+  imgUrl: string
+  isActive?: string
+  name?: string
+  handleClick?: () => void
+  disabled?: boolean
 }
 
-const Icon: React.FC<IconProps> = ({ styles, imgUrl, name, isActive, disabled, handleClick }: IconProps) => {
+const Icon: React.FC<IconProps> = ({
+	styles,
+	imgUrl,
+	name,
+	isActive,
+	disabled,
+	handleClick,
+}: IconProps) => {
 	return (
 		<div
-			className={`w-[48px] h-[48px] rounded-[10px] ${isActive && isActive === name && "bg-[#2c2f32]"
-				} flex justify-center items-center ${!disabled && "cursor-pointer"} ${styles}`}
+			className={`w-[48px] h-[48px] rounded-[10px] ${
+				isActive && isActive === name && "bg-[#2c2f32]"
+			} flex justify-center items-center ${!disabled && "cursor-pointer"} ${styles}`}
 			onClick={handleClick}
 		>
 			{!isActive ? (
