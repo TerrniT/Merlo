@@ -2,5 +2,8 @@
   "dependencies": {
     "husky": "^8.0.3",
     "lint-staged": "^13.1.0"
+  },
+  "devDependencies": {
+    "tailwind-merge": "^1.9.1"
   }
 }
