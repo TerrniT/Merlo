@@ -3,8 +3,8 @@ interface IconProps {
   imgUrl: string
   isActive?: string
   name?: string
-  handleClick?: () => void
   disabled?: boolean
+  handleClick?: () => void
 }
 
 const Icon: React.FC<IconProps> = ({
@@ -17,9 +17,11 @@ const Icon: React.FC<IconProps> = ({
 }: IconProps) => {
   return (
     <div
-      className={`w-[48px] h-[48px] rounded-[10px] ${
+      className={`rounded-[10px] ${
         isActive && isActive === name && "bg-secondary"
-      } flex justify-center items-center ${!disabled && "cursor-pointer"} ${styles}`}
+      } flex justify-center items-center ${!disabled && "cursor-pointer"} ${styles} ${
+        !styles && "w-[48px] h-[48px]"
+      } `}
       onClick={handleClick}
     >
       {!isActive ? (

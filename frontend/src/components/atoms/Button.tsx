@@ -9,15 +9,20 @@ function cn(...inputs: ClassValue[]) {
 interface ButtonProps extends React.HTMLAttributes<HTMLButtonElement> {
   title: string
   className: string
+  icon?: any
 }
 
-const Button: React.FC<ButtonProps> = ({ className, title, ...props }) => {
+const Button: React.FC<ButtonProps> = ({ className, icon, title, ...props }) => {
   return (
     <button
-      className={cn("bg-green-400 text-md text-white py-2 px-4 rounded-lg", className)}
+      className={cn(
+        "bg-green-400 text-md md:whitespace-nowrap text-white text-center py-2 px-4 flex items-center justify-center rounded-lg",
+        className,
+      )}
       {...props}
     >
-      {title}
+      {icon && <img src={icon} alt={title} className='w-6 h-6 rounded-sm object-contain' />}
+      <p className='pl-2'>{title}</p>
     </button>
   )
 }

@@ -1,8 +1,8 @@
 import React, { useState } from "react"
 import { Link, useNavigate } from "react-router-dom"
-import { Button } from "../components/atoms"
+import { Button, Icon } from "../components/atoms"
 
-import { logo, menu, search, thirdweb } from "../assets"
+import { logo, menu, metamask, profile, search, son } from "../assets"
 import { navlinks } from "../constants"
 
 const Navbar = () => {
@@ -11,7 +11,7 @@ const Navbar = () => {
   const [toggleDrawer, setToggleDrawer] = useState<boolean>(false)
 
   // hardcoded address
-  const address = "0x3123123..."
+  const address = "131xxe000...."
 
   return (
     <div className='flex md:flex-row flex-col-reverse justify-between mb-[35px] gap-6 '>
@@ -28,17 +28,86 @@ const Navbar = () => {
       <div className='hidden sm:flex flex-row justify-end gap-4'>
         <Button
           title={address ? "Create a campaign" : "Connect To Wallet"}
-          className={!address ? "bg-toxicyellow" : "bg-transparent ring-1 ring-toxicyellow "}
+          icon={address ? null : metamask}
+          className={
+            address
+              ? "bg-toxicyellow text-black font-semibold px-4 py-3"
+              : "bg-transparent ring-1 ring-toxicyellow font-semibold py-3 px-4 "
+          }
           onClick={() => {
             if (address) navigate("create-campaign")
             else console.log("connect to wallet")
           }}
         />
         <Link to='/profile'>
-          <div className='w-12 h-12 rounded-xl bg-black ring-1 ring-toxicyellow flex justify-center items-center'>
-            <img src={thirdweb} alt='user' className='w-[60%] h-[60%] object-contain' />
+          <div className='w-12 h-12 rounded-xl bg-black ring-2 ring-toxicyellow flex justify-center items-center'>
+            {address ? (
+              <img src={son} alt='user' className='w-full object-contain rounded-xl' />
+            ) : (
+              <img src={profile} alt='user' className=' h-6 w-6 object-contain rounded-xl' />
+            )}
           </div>
         </Link>
+      </div>
+      <div className='sm:hidden flex justify-between items-center relative'>
+        <div className='w-10 h-10 rounded-md bg-black ring-4 ring-toxicyellow flex justify-center items-center cursor-pointer'>
+          <img src={son} alt='user' className='w-full object-contain rounded-md' />
+        </div>
+        <img
+          alt='menu'
+          src={menu}
+          className='w-8 h-8 object-contain cursor-pointer'
+          onClick={() => setToggleDrawer((prev) => !prev)}
+        />
+      </div>
+
+      <div
+        className={`absolute top-[70px] right-0 left-0 bg-primary/30 z-10 ring-1 ring-white  ${
+          !toggleDrawer ? "-translate-y-[100vh]" : "translate-y-0"
+        } transition-all duration-500 filter backdrop-blur-xl py-4  `}
+      >
+        <ul className='mb-4'>
+          {navlinks.map((link: any) => (
+            <li
+              key={link.name}
+              className={`flex p-4 w-full rounded-xl ${isActive === link.name && "bg-secondary"}`}
+              onClick={() => {
+                setIsActive(link.name)
+                setToggleDrawer(false)
+                navigate(link.link)
+              }}
+            >
+              <img
+                src={link.imgUrl}
+                className={`w-6 h-6 object-contain ${
+                  isActive === link.name ? "grayscale-0" : "grayscale"
+                }`}
+              />
+              <p
+                className={`ml-5 font-semibold text-sm  ${
+                  isActive === link.name ? "text-toxicyellow" : "text-slate-100"
+                }`}
+              >
+                {link.name}
+              </p>
+            </li>
+          ))}
+        </ul>
+        <div className='flex mx-2 '>
+          <Button
+            title={address ? "Create a campaign" : "Connect To Wallet"}
+            icon={address ? null : metamask}
+            className={
+              address
+                ? "bg-toxicyellow text-black font-semibold px-4 py-3"
+                : "bg-transparent ring-1 ring-toxicyellow font-semibold py-3 px-4 "
+            }
+            onClick={() => {
+              if (address) navigate("create-campaign")
+              else console.log("connect to wallet")
+            }}
+          />
+        </div>
       </div>
     </div>
   )

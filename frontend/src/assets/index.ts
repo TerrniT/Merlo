@@ -1,6 +1,6 @@
 import createCampaign from "./create-campaign.svg"
 import dashboard from "./dashboard.svg"
-import logo from "./rti.png"
+import logo from "./logo.svg"
 import logout from "./logout.svg"
 import payment from "./payment.svg"
 import profile from "./profile.svg"
@@ -12,20 +12,24 @@ import menu from "./menu.svg"
 import money from "./money.svg"
 import loader from "./loader.svg"
 import thirdweb from "./thirdweb.png"
+import metamask from "./metamask.svg"
+import son from "./GodSon.png"
 
 export {
-	thirdweb,
-	tagType,
-	createCampaign,
-	dashboard,
-	logo,
-	logout,
-	payment,
-	profile,
-	sun,
-	withdraw,
-	search,
-	menu,
-	money,
-	loader,
+  metamask,
+  son,
+  thirdweb,
+  tagType,
+  createCampaign,
+  dashboard,
+  logo,
+  logout,
+  payment,
+  profile,
+  sun,
+  withdraw,
+  search,
+  menu,
+  money,
+  loader,
 }

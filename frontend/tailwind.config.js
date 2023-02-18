@@ -9,6 +9,7 @@ module.exports = {
       colors: {
         toxicyellow: "#D4F82D",
         secondary: "#1c1c24",
+        primary: "#111111",
       },
     },
   },
