@@ -1,8 +1,6 @@
 import React from "react"
 
-type Props = {}
-
-function CampaignSkeleton({}: Props) {
+const CampaignSkeleton = () => {
   return (
     <div className='bg-secondary h-screen animate-pulse justify-center items-center grid grid-cols-2 gap-4 rounded-xl sm:p-10 p-4'>
       <div className='h-[50%] w-full bg-black'></div>
