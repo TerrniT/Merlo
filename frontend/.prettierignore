@@ -2,6 +2,7 @@ build
 node_modules
 .github
 .git
+.husky
 .env
 .env.local
 .vscode

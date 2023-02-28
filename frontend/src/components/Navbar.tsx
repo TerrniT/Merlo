@@ -8,6 +8,7 @@ import { navlinks } from "../constants"
 const Navbar = () => {
   const navigate = useNavigate()
   const [isActive, setIsActive] = useState<string>("dashboard")
+
   const [toggleDrawer, setToggleDrawer] = useState<boolean>(false)
 
   // hardcoded address

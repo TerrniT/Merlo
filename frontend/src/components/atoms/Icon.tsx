@@ -25,12 +25,14 @@ const Icon: React.FC<IconProps> = ({
       onClick={handleClick}
     >
       {!isActive ? (
-        <img src={imgUrl} alt='fund_logo' className='w-1/2 h-1/2 ' />
+        <img src={imgUrl} alt='fund_logo' className='w-1/2 h-1/2 cursor-pointer hover:grayscale' />
       ) : (
         <img
           src={imgUrl}
           alt='fund_logo'
-          className={`w-1/2 h-1/2  ${isActive !== name && "grayscale"} `}
+          className={`w-1/2 h-1/2  ${
+            isActive !== name && "grayscale"
+          } cursor-pointer hover:grayscale-0 transition-all duration-300`}
         />
       )}
     </div>

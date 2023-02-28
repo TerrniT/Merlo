@@ -4,7 +4,7 @@
 
 #!/ Frontend 
 echo "Running frontend linting tool..🥯🥯🥯"
-cd ./frontend && npm run format && npm run lint:fix 
+cd ./frontend && npm run lint:fix && npm run format 
 echo "\033c"
 
 
