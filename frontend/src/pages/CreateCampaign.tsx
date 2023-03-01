@@ -5,8 +5,11 @@ import { money } from "../assets"
 import { Button, FormField } from "../components/atoms"
 import { checkIfImage } from "../utils"
 import CampaignSkeleton from "../components/CampaignSkeleton"
+import { useThirdWebContext } from "../context"
 
 const CreateCampaign = () => {
+  const { createCampaign } = useThirdWebContext()
+
   const navigate = useNavigate()
   const [isLoading, setIsLoading] = useState<boolean>(false)
   const [form, setForm] = useState({
@@ -22,9 +25,21 @@ const CreateCampaign = () => {
     setForm({ ...form, [fieldName]: e.target.value })
   }
 
-  const handleSubmit = (e: any) => {
+  const handleSubmit = async (e: any) => {
     e.preventDefault()
-    console.log(form)
+    checkIfImage(form.image, async (exists) => {
+      if (exists) {
+        setIsLoading(true)
+        await createCampaign({ ...form, target: ethers.utils.parseUnits(form.target, 18) })
+
+        setIsLoading(false)
+        navigate("/campaings")
+      } else {
+        // TODO: toast ui
+        alert("Provide valid image URL")
+        setForm({ ...form, image: "" })
+      }
+    })
   }
 
   return (
