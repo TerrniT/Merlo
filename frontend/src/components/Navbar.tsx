@@ -1,6 +1,7 @@
 import React, { useState } from "react"
 import { Link, useNavigate } from "react-router-dom"
 import { Button, Icon } from "../components/atoms"
+import { useThirdWebContext } from "../context"
 
 import { logo, menu, metamask, profile, search, son } from "../assets"
 import { navlinks } from "../constants"
@@ -11,8 +12,7 @@ const Navbar = () => {
 
   const [toggleDrawer, setToggleDrawer] = useState<boolean>(false)
 
-  // hardcoded address
-  const address = "131xxe000...."
+  const { connect, address } = useThirdWebContext()
 
   return (
     <div className='flex md:flex-row flex-col-reverse justify-between mb-[35px] gap-6 '>
@@ -37,7 +37,7 @@ const Navbar = () => {
           }
           onClick={() => {
             if (address) navigate("create-campaign")
-            else console.log("connect to wallet")
+            else connect()
           }}
         />
         <Link to='/profile'>
@@ -105,7 +105,7 @@ const Navbar = () => {
             }
             onClick={() => {
               if (address) navigate("create-campaign")
-              else console.log("connect to wallet")
+              else connect()
             }}
           />
         </div>
