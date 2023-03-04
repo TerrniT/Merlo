@@ -3,6 +3,7 @@ import dashboard from "./dashboard.svg"
 import logo from "./logo.svg"
 import logout from "./logout.svg"
 import payment from "./payment.svg"
+import ethereum from "./ethereum.svg"
 import profile from "./profile.svg"
 import sun from "./sun.svg"
 import withdraw from "./withdraw.svg"
@@ -17,6 +18,7 @@ import son from "./GodSon.png"
 
 export {
   metamask,
+  ethereum,
   son,
   thirdweb,
   tagType,
