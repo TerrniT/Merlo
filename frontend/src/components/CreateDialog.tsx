@@ -1,8 +1,8 @@
-import { Fragment } from 'react'
-import { Dialog, Transition } from '@headlessui/react'
+import { Fragment } from "react"
+import { Dialog, Transition } from "@headlessui/react"
 import { FaCheck, FaSpinner } from "react-icons/fa"
-import useModal from '../hooks/useModal'
-import { useNavigate } from 'react-router-dom'
+import useModal from "../hooks/useModal"
+import { useNavigate } from "react-router-dom"
 
 interface Props {
   isSuccess?: boolean
@@ -45,7 +45,7 @@ const CreateDialog = ({ isSuccess }: Props) => {
               >
                 <Dialog.Panel className="w-full max-w-md transform overflow-hidden rounded-2xl bg-secondary border border-gray-800  p-6 text-left align-middle shadow-xl transition-all">
                   {isSuccess ? (
-                    <div className=' rounded-full w-14 h-14 my-6 text-green-500 flex items-center justify-center mx-auto '>
+                    <div className='rounded-full w-14 h-14 my-6 text-green-500 flex items-center justify-center mx-auto '>
                       <FaCheck className='text-5xl' />
                     </div>
                   ) : (
@@ -69,7 +69,7 @@ const CreateDialog = ({ isSuccess }: Props) => {
                   ) : (
                     <div className="mt-2 ">
                       <p className="text-sm text-center text-gray-500">
-                        After couple seconds you'll be re-direct to main page with campaigns
+                        It might takes some time to transfer gas, Please wait
                       </p>
                     </div>
                   )}

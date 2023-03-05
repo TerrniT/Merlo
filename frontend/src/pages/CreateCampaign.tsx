@@ -36,7 +36,7 @@ const CreateCampaign = () => {
           setIsLoading(false)
         } catch (error) {
           alert("Provide valid image URL")
-          console.log(error);
+          console.log(error)
           setForm({ ...form, image: "" })
         } finally {
           setIsSuccess(true)
