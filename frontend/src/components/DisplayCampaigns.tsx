@@ -1,6 +1,5 @@
 import { Campaign } from "../types"
 import CampaignSkeleton from "./CampaignSkeleton"
-import CreateDialog from "./CreateDialog"
 import FundCard from "./FundCard"
 
 type Props = {
