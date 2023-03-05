@@ -11,3 +11,8 @@ export interface Campaign {
   image: string
   pId?: number
 }
+
+export type Donators = {
+  donator: string
+  donation: string
+}
