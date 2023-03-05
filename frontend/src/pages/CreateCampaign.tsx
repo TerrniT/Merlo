@@ -47,16 +47,18 @@ const CreateCampaign = () => {
   return (
     <>
       {!address ? (
-        <div className="h-screen p-6 bg-secondary rounded-xl mx-auto flex  items-center justify-center">
-          <div className="flex-col gap-4 flex items-center w-44">
-            <h2 className="text-white font-bold text-2xl break-all text-center">Something Is Wrong</h2>
-            <p className="text-zinc-600 font-medium text-sm text-center ">To create campaign you might be authorize</p>
+        <div className='h-screen p-6 bg-secondary rounded-xl mx-auto flex  items-center justify-center'>
+          <div className='flex-col gap-4 flex items-center w-44'>
+            <h2 className='text-white font-bold text-2xl break-all text-center'>
+              Something Is Wrong
+            </h2>
+            <p className='text-zinc-600 font-medium text-sm text-center '>
+              To create campaign you might be authorize
+            </p>
             <Button
               title={"Connect To Wallet"}
               icon={metamask}
-              className={
-                "bg-transparent ring-1 ring-zinc-500 font-semibold py-3 px-4 "
-              }
+              className={"bg-transparent ring-1 ring-zinc-500 font-semibold py-3 px-4 "}
               onClick={() => {
                 connect()
               }}
@@ -69,7 +71,7 @@ const CreateCampaign = () => {
           {isSuccess && <CreateDialog isSuccess={isSuccess} />}
           <div className='flex justify-center items-center p-4 sm:mix-w-[380px] bg-zinc-700 rounded-xl'>
             <h1 className='font-bold sm:text-2xl text-xl leading-9 text-white'>Start a Campaign</h1>
-          </div >
+          </div>
           <form className='w-full mt-16 flex flex-col gap-8 ' onSubmit={handleSubmit}>
             <div className='flex flex-wrap gap-10 '>
               <FormField
@@ -132,9 +134,8 @@ const CreateCampaign = () => {
               />
             </div>
           </form>
-        </div >
+        </div>
       )}
-
     </>
   )
 }

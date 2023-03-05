@@ -5,7 +5,6 @@ export interface INavlink {
   imgUrl: string
   link: string
   disabled?: boolean
-
 }
 
 export const navlinks: INavlink[] = [

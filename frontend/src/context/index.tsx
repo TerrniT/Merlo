@@ -55,7 +55,7 @@ export const ThirdWebContextProvider = ({ children }: Props) => {
         const userCampaigns = allCampaings.filter((campaign) => campaign.owner === address)
         return userCampaigns
       } catch (error) {
-        console.log(error);
+        console.log(error)
       }
     }
   }
@@ -80,8 +80,6 @@ export const ThirdWebContextProvider = ({ children }: Props) => {
       console.log("@@@: Can't get donations", error)
     }
   }
-
-
 
   const getCampaigns = async () => {
     try {
