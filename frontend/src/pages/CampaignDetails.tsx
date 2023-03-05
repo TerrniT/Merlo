@@ -22,7 +22,7 @@ const CampaignDetails = () => {
   }
 
   return (
-    <div>
+    <>
       {isLoading && <p className="text-white font-bold text-2xl">Loading...</p>}
       <div className="w-full flex md:flex-row flex-col mt-10 gap-8">
         <div className="flex-1 flex-col ">
@@ -31,6 +31,7 @@ const CampaignDetails = () => {
             <div className="absolute h-full  bg-toxicyellow " style={{ width: `${calculateBarPercentage(state.target, state.amountCollected)}%`, maxWidth: '100%' }}></div>
           </div>
         </div>
+
         <div className="flex md:w-[150px] w-full flex-wrap justify-between gap-8">
           <CountBox title="Days Left" value={remainingDays} />
           <CountBox title={`Raised of ${state.target}`} value={state.amountCollected} />
@@ -62,12 +63,13 @@ const CampaignDetails = () => {
           <div className="">
             <h4 className='font-bold text-3xl text-white  w-full text-left truncate uppercase'>Donators</h4>
             <div className="mt-5 flex flex-col gap-4">
-              {donators.length > 0 ? donators.map((donator, index) => (
-                <div>Donator</div>
-              )) : (
-                <p className="text-gray-700 text-xs font-bold leading-7 text-justify">No donators yet. Be the first one!</p>
-              )}
+              {/* {donators.length > 0 ? donators.map((donator, index) => ( */}
+              {/*   <div>Donator</div> */}
+              {/* )) : ( */}
+              {/*   <p className="text-gray-700 text-xs font-bold leading-7 text-justify">No donators yet. Be the first one!</p> */}
+              {/* )} */}
 
+              <p className="text-gray-700 text-xs font-bold leading-7 text-justify">No donators yet. Be the first one!</p>
             </div>
           </div>
         </div>
@@ -94,10 +96,9 @@ const CampaignDetails = () => {
               <Button title="Fund Campaign" className="w-full mx-auto mt-4 bg-rose-700 hover:bg-rose-800 transition-all duration-200" onClick={handleDonate} />
             </div>
           </div>
-
         </div>
       </div>
-    </div>
+    </>
   )
 }
 
