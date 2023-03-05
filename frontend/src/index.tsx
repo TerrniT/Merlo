@@ -9,11 +9,11 @@ const container = document.getElementById("root") as HTMLElement
 const root = createRoot(container)
 
 root.render(
-	<ThirdwebProvider desiredChainId={ChainId.Goerli}>
-		<Router>
-			<ThirdWebContextProvider>
-				<App />
-			</ThirdWebContextProvider>
-		</Router>
-	</ThirdwebProvider>,
+  <ThirdwebProvider desiredChainId={ChainId.Goerli}>
+    <Router>
+      <ThirdWebContextProvider>
+        <App />
+      </ThirdWebContextProvider>
+    </Router>
+  </ThirdwebProvider>,
 )

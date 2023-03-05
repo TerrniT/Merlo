@@ -37,36 +37,34 @@ export const ThirdWebContextProvider = ({ children }: Props) => {
   const donate = async (pId: Campaign, amount: string) => {
     try {
       if (contract) {
-        const data = await contract.call('donateToCampaign', pId, {
-          value: ethers.utils.parseEther(amount)
+        const data = await contract.call("donateToCampaign", pId, {
+          value: ethers.utils.parseEther(amount),
         })
         return data
       }
     } catch (error) {
-      console.log("@@@: Can't donate to campaign", error);
+      console.log("@@@: Can't donate to campaign", error)
     }
   }
 
   const getDonations = async (pId: Campaign): Promise<Donators[] | undefined> => {
     try {
       if (contract) {
-        const donations = await contract.call('getDonators', pId)
+        const donations = await contract.call("getDonators", pId)
         const numberOfDonations = donations[0].length
 
         const parsedDonations: Donators[] = []
         for (let i = 0; i < numberOfDonations; i++) {
-          parsedDonations.push(
-            {
-              donator: donations[0][i],
-              donation: ethers.utils.formatEther(donations[1][i].toString())
-            }
-          )
+          parsedDonations.push({
+            donator: donations[0][i],
+            donation: ethers.utils.formatEther(donations[1][i].toString()),
+          })
         }
 
         return parsedDonations
       }
     } catch (error) {
-      console.log("@@@: Can't get donations", error);
+      console.log("@@@: Can't get donations", error)
     }
   }
 
@@ -97,7 +95,15 @@ export const ThirdWebContextProvider = ({ children }: Props) => {
 
   return (
     <ThirdWebContext.Provider
-      value={{ address, connect, contract, createCampaign: publishCampaign, getCampaigns, getDonations, donate }}
+      value={{
+        address,
+        connect,
+        contract,
+        createCampaign: publishCampaign,
+        getCampaigns,
+        getDonations,
+        donate,
+      }}
     >
       {children}
     </ThirdWebContext.Provider>

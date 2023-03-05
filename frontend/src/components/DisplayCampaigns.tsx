@@ -9,7 +9,6 @@ type Props = {
 }
 
 const DisplayCampaigns = ({ title, isLoading, campaigns }: Props) => {
-
   return (
     <div>
       <h1 className='font-semibold text-lg text-white text-left'>
