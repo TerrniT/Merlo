@@ -4,14 +4,15 @@ import { ethers } from "ethers"
 import { money } from "../assets"
 import { Button, FormField } from "../components/atoms"
 import { checkIfImage } from "../utils"
-import CampaignSkeleton from "../components/CampaignSkeleton"
 import { useThirdWebContext } from "../context"
+import { CreateDialog } from "../components"
 
 const CreateCampaign = () => {
   const { createCampaign } = useThirdWebContext()
 
-  const navigate = useNavigate()
   const [isLoading, setIsLoading] = useState<boolean>(false)
+  const [isSuccess, setIsSuccess] = useState<boolean>(false)
+
   const [form, setForm] = useState({
     name: "",
     title: "",
@@ -29,22 +30,25 @@ const CreateCampaign = () => {
     e.preventDefault()
     checkIfImage(form.image, async (exists) => {
       if (exists) {
-        setIsLoading(true)
-        await createCampaign({ ...form, target: ethers.utils.parseUnits(form.target, 18) })
-
-        setIsLoading(false)
-        navigate("/campaings")
-      } else {
-        // TODO: toast ui
-        alert("Provide valid image URL")
-        setForm({ ...form, image: "" })
+        try {
+          setIsLoading(true)
+          await createCampaign({ ...form, target: ethers.utils.parseUnits(form.target, 18) })
+          setIsLoading(false)
+        } catch (error) {
+          alert("Provide valid image URL")
+          console.log(error);
+          setForm({ ...form, image: "" })
+        } finally {
+          setIsSuccess(true)
+        }
       }
     })
   }
 
   return (
     <div className='bg-secondary justify-center items-center flex-col rounded-xl sm:p-10 p-4'>
-      {isLoading && <CampaignSkeleton />}
+      {isLoading && <CreateDialog />}
+      {isSuccess && <CreateDialog isSuccess={isSuccess} />}
       <div className='flex justify-center items-center p-4 sm:mix-w-[380px] bg-zinc-700 rounded-xl'>
         <h1 className='font-bold sm:text-2xl text-xl leading-9 text-white'>Start a Campaign</h1>
       </div>

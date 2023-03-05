@@ -1,10 +1,12 @@
-import React, { useState } from "react"
+import { useState } from "react"
 import { Link, useNavigate } from "react-router-dom"
-import { Button, Icon } from "../components/atoms"
+import { Button } from "../components/atoms"
 import { useThirdWebContext } from "../context"
 
-import { logo, menu, metamask, profile, search, son } from "../assets"
+import { menu, metamask, profile, search, son } from "../assets"
 import { navlinks } from "../constants"
+import Jazzicon from "react-jazzicon/dist/Jazzicon"
+import { jsNumberForAddress } from "react-jazzicon"
 
 const Navbar = () => {
   const navigate = useNavigate()
@@ -41,9 +43,9 @@ const Navbar = () => {
           }}
         />
         <Link to='/profile'>
-          <div className='w-12 h-12 rounded-xl bg-black ring-2 ring-toxicyellow flex justify-center items-center'>
+          <div className='w-12 h-12 rounded-2xl bg-black ring-2 ring-toxicyellow flex justify-center items-center'>
             {address ? (
-              <img src={son} alt='user' className='w-full object-contain rounded-xl' />
+              <Jazzicon diameter={45} seed={jsNumberForAddress(address)} />
             ) : (
               <img src={profile} alt='user' className=' h-6 w-6 object-contain rounded-xl' />
             )}
@@ -63,9 +65,8 @@ const Navbar = () => {
       </div>
 
       <div
-        className={`absolute top-[70px] right-0 left-0 bg-primary/30 z-10 ring-1 ring-white  ${
-          !toggleDrawer ? "-translate-y-[100vh]" : "translate-y-0"
-        } transition-all duration-500 filter backdrop-blur-xl py-4  `}
+        className={`absolute top-[70px] right-0 left-0 bg-primary/30 z-10 ring-1 ring-white  ${!toggleDrawer ? "-translate-y-[100vh]" : "translate-y-0"
+          } transition-all duration-500 filter backdrop-blur-xl py-4  `}
       >
         <ul className='mb-4'>
           {navlinks.map((link: any) => (
@@ -80,14 +81,12 @@ const Navbar = () => {
             >
               <img
                 src={link.imgUrl}
-                className={`w-6 h-6 object-contain ${
-                  isActive === link.name ? "grayscale-0" : "grayscale"
-                }`}
+                className={`w-6 h-6 object-contain ${isActive === link.name ? "grayscale-0" : "grayscale"
+                  }`}
               />
               <p
-                className={`ml-5 font-semibold text-sm  ${
-                  isActive === link.name ? "text-toxicyellow" : "text-slate-100"
-                }`}
+                className={`ml-5 font-semibold text-sm  ${isActive === link.name ? "text-toxicyellow" : "text-slate-100"
+                  }`}
               >
                 {link.name}
               </p>

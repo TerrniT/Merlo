@@ -37,7 +37,7 @@ export const ThirdWebContextProvider = ({ children }: Props) => {
   const getCampaigns = async (form: any) => {
     try {
       if (contract) {
-        const campaigns = await contract.call('getCampaigns')
+        const campaigns = await contract.call("getCampaigns")
 
         const parseCampaigns: Campaign = campaigns.map((campaign: Campaign, index: any) => ({
           owner: campaign.owner,
@@ -47,13 +47,12 @@ export const ThirdWebContextProvider = ({ children }: Props) => {
           deadline: campaign.deadline.toNumber(),
           amountCollected: ethers.utils.formatEther(campaign.amountCollected.toString()),
           image: campaign.image,
-          pId: index
+          pId: index,
         }))
 
         return parseCampaigns
-      }
-      else {
-        console.log("something went wrong");
+      } else {
+        console.log("something went wrong")
       }
     } catch {
       console.log("contract call failure")
