@@ -65,8 +65,9 @@ const Navbar = () => {
       </div>
 
       <div
-        className={`absolute top-[70px] right-0 left-0 bg-primary/30 z-10 ring-1 ring-white  ${!toggleDrawer ? "-translate-y-[100vh]" : "translate-y-0"
-          } transition-all duration-500 filter backdrop-blur-xl py-4  `}
+        className={`absolute top-[70px] right-0 left-0 bg-primary/30 z-10 ring-1 ring-white  ${
+          !toggleDrawer ? "-translate-y-[100vh]" : "translate-y-0"
+        } transition-all duration-500 filter backdrop-blur-xl py-4  `}
       >
         <ul className='mb-4'>
           {navlinks.map((link: any) => (
@@ -81,12 +82,14 @@ const Navbar = () => {
             >
               <img
                 src={link.imgUrl}
-                className={`w-6 h-6 object-contain ${isActive === link.name ? "grayscale-0" : "grayscale"
-                  }`}
+                className={`w-6 h-6 object-contain ${
+                  isActive === link.name ? "grayscale-0" : "grayscale"
+                }`}
               />
               <p
-                className={`ml-5 font-semibold text-sm  ${isActive === link.name ? "text-toxicyellow" : "text-slate-100"
-                  }`}
+                className={`ml-5 font-semibold text-sm  ${
+                  isActive === link.name ? "text-toxicyellow" : "text-slate-100"
+                }`}
               >
                 {link.name}
               </p>

@@ -1,4 +1,4 @@
-import React, { useContext, createContext, ReactNode } from "react"
+import React, { useContext, createContext } from "react"
 
 import { useAddress, useContract, useMetamask, useContractWrite } from "@thirdweb-dev/react"
 
@@ -34,6 +34,10 @@ export const ThirdWebContextProvider = ({ children }: Props) => {
     }
   }
 
+  const getDonations = async () => {
+
+  }
+
   const getCampaigns = async (form: any) => {
     try {
       if (contract) {
@@ -61,7 +65,7 @@ export const ThirdWebContextProvider = ({ children }: Props) => {
 
   return (
     <ThirdWebContext.Provider
-      value={{ address, connect, contract, createCampaign: publishCampaign, getCampaigns }}
+      value={{ address, connect, contract, createCampaign: publishCampaign, getCampaigns, getDonations }}
     >
       {children}
     </ThirdWebContext.Provider>

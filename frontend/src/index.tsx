@@ -15,5 +15,5 @@ root.render(
         <App />
       </ThirdWebContextProvider>
     </Router>
-  </ThirdwebProvider>
+  </ThirdwebProvider>,
 )

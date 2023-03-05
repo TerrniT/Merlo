@@ -1,3 +1,5 @@
 export { default as Button } from "./Button"
 export { default as Icon } from "./Icon"
 export { default as FormField } from "./FormField"
+export { default as CountBox } from "./CountBox"
+export { default as ProfileIcon } from "./ProfileIcon"
