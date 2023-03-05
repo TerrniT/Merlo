@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react"
-import { useLocation } from "react-router-dom"
+import { useLocation, useNavigate } from "react-router-dom"
 import { useThirdWebContext } from "../context"
 import { Button, CountBox, ProfileIcon } from "../components/atoms"
 import { calculateBarPercentage, daysLeft } from "../utils"
@@ -9,6 +9,8 @@ import { CreateDialog } from "../components"
 
 const CampaignDetails = () => {
   const { state } = useLocation()
+
+  const navigate = useNavigate()
 
   const { getDonations, donate, contract, address } = useThirdWebContext()
 
@@ -26,6 +28,7 @@ const CampaignDetails = () => {
   const handleDonate = async () => {
     setisLoading(true)
     await donate(state.pId, amount)
+    navigate("/")
     setisLoading(false)
   }
 
@@ -71,7 +74,9 @@ const CampaignDetails = () => {
                 <ProfileIcon owner={state.owner} />
               </div>
               <div>
-                <h4 className='text-white break-all font-medium text-sm truncate lg:w-full w-[180px]'>{state.owner}</h4>
+                <h4 className='text-white break-all font-medium text-sm truncate lg:w-full w-[180px]'>
+                  {state.owner}
+                </h4>
                 <p className='text-toxicyellow text-xs font-bold mt-2'>10 Campaings</p>
               </div>
             </div>

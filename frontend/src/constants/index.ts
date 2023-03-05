@@ -1,8 +1,14 @@
 import { createCampaign, dashboard, logout, payment, profile, withdraw } from "../assets/"
 
-// TODO: add interface
+export interface INavlink {
+  name: string
+  imgUrl: string
+  link: string
+  disabled?: boolean
 
-export const navlinks: any = [
+}
+
+export const navlinks: INavlink[] = [
   {
     name: "dashboard",
     imgUrl: dashboard,

@@ -47,6 +47,19 @@ export const ThirdWebContextProvider = ({ children }: Props) => {
     }
   }
 
+  const getUserCampaigns = async () => {
+    const allCampaings: Campaign[] | undefined = await getCampaigns()
+
+    if (allCampaings) {
+      try {
+        const userCampaigns = allCampaings.filter((campaign) => campaign.owner === address)
+        return userCampaigns
+      } catch (error) {
+        console.log(error);
+      }
+    }
+  }
+
   const getDonations = async (pId: Campaign): Promise<Donators[] | undefined> => {
     try {
       if (contract) {
@@ -68,12 +81,14 @@ export const ThirdWebContextProvider = ({ children }: Props) => {
     }
   }
 
-  const getCampaigns = async (form: any) => {
+
+
+  const getCampaigns = async () => {
     try {
       if (contract) {
         const campaigns = await contract.call("getCampaigns")
 
-        const parseCampaigns: Campaign = campaigns.map((campaign: Campaign, index: any) => ({
+        const parseCampaigns: Campaign[] = campaigns.map((campaign: Campaign, index: any) => ({
           owner: campaign.owner,
           title: campaign.title,
           description: campaign.description,
@@ -100,9 +115,10 @@ export const ThirdWebContextProvider = ({ children }: Props) => {
         connect,
         contract,
         createCampaign: publishCampaign,
-        getCampaigns,
-        getDonations,
         donate,
+        getCampaigns,
+        getUserCampaigns,
+        getDonations,
       }}
     >
       {children}
