@@ -5,7 +5,6 @@ import { defineConfig } from "vite"
 export default defineConfig({
   plugins: [react()],
   define: {
-    global: "style",
     "process.env": {},
   },
 })
